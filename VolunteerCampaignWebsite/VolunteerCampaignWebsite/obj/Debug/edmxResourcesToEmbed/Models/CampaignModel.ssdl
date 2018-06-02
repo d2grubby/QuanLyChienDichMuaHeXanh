@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VolunteerCampaignDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHIENDICH">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NgayBatDau" Type="date" Nullable="false" />
+    <Property Name="ThoiGian" Type="int" Nullable="false" />
+    <Property Name="YNghia" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoLuongNguoiCan" Type="int" Nullable="false" />
+    <Property Name="SoLuongNguoiThamGia" Type="int" Nullable="false" />
+    <Property Name="NgayHetHan" Type="date" Nullable="false" />
+    <Property Name="MoreInfo" Type="ntext" />
+  </EntityType>
+  <EntityType Name="CHIPHIPHATSINH">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPhieuThanhToan" Type="int" Nullable="false" />
+    <Property Name="IdCV" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LyDo" Type="ntext" />
+    <Property Name="ChungTu" Type="varchar" MaxLength="50" />
+    <Property Name="DonGia" Type="float" />
+  </EntityType>
+  <EntityType Name="CHUCVU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Luong" Type="float" Nullable="false" />
+    <Property Name="QuyenHan" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CONGVIEC">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="IdCD" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="TenCV" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DiaDiem" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NoiDung" Type="nvarchar" MaxLength="100" />
+    <Property Name="SoLuongNguoi" Type="int" Nullable="false" />
+    <Property Name="NgayBatDau" Type="datetime" Nullable="false" />
+    <Property Name="ThoiGian" Type="int" Nullable="false" />
+    <Property Name="ChiPhiMotNguoi" Type="money" Nullable="false" />
+    <Property Name="MoreInfo" Type="ntext" />
+  </EntityType>
+  <EntityType Name="CTCONGVIEC">
+    <Key>
+      <PropertyRef Name="IdCV" />
+      <PropertyRef Name="IdDoi" />
+    </Key>
+    <Property Name="IdCV" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="IdDoi" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="KetQuaCV" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="HinhAnh" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DOI">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="IdCD" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="SoLuongThanhVien" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GIANGVIEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="IdCD" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="IdDoi" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgaySinh" Type="date" Nullable="false" />
+    <Property Name="GioiTinh" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Khoa" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdChucVu" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar" MaxLength="30" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Pwrd" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHIEUTHANHTOAN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCD" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ChiPhiDuDinh" Type="float" Nullable="false" />
+    <Property Name="CHiPhiThucTe" Type="float" Nullable="false" />
+    <Property Name="TongChiPhiPhatSinh" Type="float" Nullable="false" />
+    <Property Name="TongChiPhiDuDinh" Type="float" Nullable="false" />
+    <Property Name="TongChiPhiThucTe" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SINHVIEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="IdCD" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="IdDoi" Type="char" MaxLength="13" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NgaySinh" Type="date" Nullable="false" />
+    <Property Name="GioiTinh" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Lop" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="NgayVaoDoan" Type="date" />
+    <Property Name="DiemTB" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__CHIPHIPHA__IdPhi__6B24EA82">
+    <End Role="PHIEUTHANHTOAN" Type="Self.PHIEUTHANHTOAN" Multiplicity="1" />
+    <End Role="CHIPHIPHATSINH" Type="Self.CHIPHIPHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUTHANHTOAN">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CHIPHIPHATSINH">
+        <PropertyRef Name="IdPhieuThanhToan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHIPHIPHAT__IdCV__6C190EBB">
+    <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="1" />
+    <End Role="CHIPHIPHATSINH" Type="Self.CHIPHIPHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONGVIEC">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CHIPHIPHATSINH">
+        <PropertyRef Name="IdCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CONGVIEC__IdCD__440B1D61">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CONGVIEC">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTCONGVIE__IdDoi__5812160E">
+    <End Role="DOI" Type="Self.DOI" Multiplicity="1" />
+    <End Role="CTCONGVIEC" Type="Self.CTCONGVIEC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOI">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CTCONGVIEC">
+        <PropertyRef Name="IdDoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTCONGVIEC__IdCV__571DF1D5">
+    <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="1" />
+    <End Role="CTCONGVIEC" Type="Self.CTCONGVIEC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONGVIEC">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CTCONGVIEC">
+        <PropertyRef Name="IdCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DOI__IdCD__48CFD27E">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="DOI" Type="Self.DOI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DOI">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GIANGVIEN__IdCD__7E37BEF6">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GIANGVIEN">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GIANGVIEN__IdDoi__7F2BE32F">
+    <End Role="DOI" Type="Self.DOI" Multiplicity="1" />
+    <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOI">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GIANGVIEN">
+        <PropertyRef Name="IdDoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NHANVIEN__IdChuc__74AE54BC">
+    <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="IdChucVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTHANH__IdCD__6477ECF3">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="PHIEUTHANHTOAN" Type="Self.PHIEUTHANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PHIEUTHANHTOAN">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SINHVIEN__IdCD__7A672E12">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="SINHVIEN" Type="Self.SINHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SINHVIEN">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SINHVIEN__IdDoi__7B5B524B">
+    <End Role="DOI" Type="Self.DOI" Multiplicity="1" />
+    <End Role="SINHVIEN" Type="Self.SINHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOI">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SINHVIEN">
+        <PropertyRef Name="IdDoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VolunteerCampaignDBModelStoreContainer">
+    <EntitySet Name="CHIENDICH" EntityType="Self.CHIENDICH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHIPHIPHATSINH" EntityType="Self.CHIPHIPHATSINH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CONGVIEC" EntityType="Self.CONGVIEC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CTCONGVIEC" EntityType="Self.CTCONGVIEC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DOI" EntityType="Self.DOI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GIANGVIEN" EntityType="Self.GIANGVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHIEUTHANHTOAN" EntityType="Self.PHIEUTHANHTOAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SINHVIEN" EntityType="Self.SINHVIEN" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CHIPHIPHA__IdPhi__6B24EA82" Association="Self.FK__CHIPHIPHA__IdPhi__6B24EA82">
+      <End Role="PHIEUTHANHTOAN" EntitySet="PHIEUTHANHTOAN" />
+      <End Role="CHIPHIPHATSINH" EntitySet="CHIPHIPHATSINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHIPHIPHAT__IdCV__6C190EBB" Association="Self.FK__CHIPHIPHAT__IdCV__6C190EBB">
+      <End Role="CONGVIEC" EntitySet="CONGVIEC" />
+      <End Role="CHIPHIPHATSINH" EntitySet="CHIPHIPHATSINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CONGVIEC__IdCD__440B1D61" Association="Self.FK__CONGVIEC__IdCD__440B1D61">
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+      <End Role="CONGVIEC" EntitySet="CONGVIEC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTCONGVIE__IdDoi__5812160E" Association="Self.FK__CTCONGVIE__IdDoi__5812160E">
+      <End Role="DOI" EntitySet="DOI" />
+      <End Role="CTCONGVIEC" EntitySet="CTCONGVIEC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTCONGVIEC__IdCV__571DF1D5" Association="Self.FK__CTCONGVIEC__IdCV__571DF1D5">
+      <End Role="CONGVIEC" EntitySet="CONGVIEC" />
+      <End Role="CTCONGVIEC" EntitySet="CTCONGVIEC" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DOI__IdCD__48CFD27E" Association="Self.FK__DOI__IdCD__48CFD27E">
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+      <End Role="DOI" EntitySet="DOI" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GIANGVIEN__IdCD__7E37BEF6" Association="Self.FK__GIANGVIEN__IdCD__7E37BEF6">
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+      <End Role="GIANGVIEN" EntitySet="GIANGVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GIANGVIEN__IdDoi__7F2BE32F" Association="Self.FK__GIANGVIEN__IdDoi__7F2BE32F">
+      <End Role="DOI" EntitySet="DOI" />
+      <End Role="GIANGVIEN" EntitySet="GIANGVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NHANVIEN__IdChuc__74AE54BC" Association="Self.FK__NHANVIEN__IdChuc__74AE54BC">
+      <End Role="CHUCVU" EntitySet="CHUCVU" />
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTHANH__IdCD__6477ECF3" Association="Self.FK__PHIEUTHANH__IdCD__6477ECF3">
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+      <End Role="PHIEUTHANHTOAN" EntitySet="PHIEUTHANHTOAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SINHVIEN__IdCD__7A672E12" Association="Self.FK__SINHVIEN__IdCD__7A672E12">
+      <End Role="CHIENDICH" EntitySet="CHIENDICH" />
+      <End Role="SINHVIEN" EntitySet="SINHVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SINHVIEN__IdDoi__7B5B524B" Association="Self.FK__SINHVIEN__IdDoi__7B5B524B">
+      <End Role="DOI" EntitySet="DOI" />
+      <End Role="SINHVIEN" EntitySet="SINHVIEN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

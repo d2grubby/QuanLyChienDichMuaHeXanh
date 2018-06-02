@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VolunteerCampaignDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CHIENDICH">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ThoiGian" Type="Int32" Nullable="false" />
+    <Property Name="YNghia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuongNguoiCan" Type="Int32" Nullable="false" />
+    <Property Name="SoLuongNguoiThamGia" Type="Int32" Nullable="false" />
+    <Property Name="NgayHetHan" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MoreInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CONGVIECs" Relationship="Self.FK__CONGVIEC__IdCD__440B1D61" FromRole="CHIENDICH" ToRole="CONGVIEC" />
+    <NavigationProperty Name="DOIs" Relationship="Self.FK__DOI__IdCD__48CFD27E" FromRole="CHIENDICH" ToRole="DOI" />
+    <NavigationProperty Name="GIANGVIENs" Relationship="Self.FK__GIANGVIEN__IdCD__7E37BEF6" FromRole="CHIENDICH" ToRole="GIANGVIEN" />
+    <NavigationProperty Name="PHIEUTHANHTOANs" Relationship="Self.FK__PHIEUTHANH__IdCD__6477ECF3" FromRole="CHIENDICH" ToRole="PHIEUTHANHTOAN" />
+    <NavigationProperty Name="SINHVIENs" Relationship="Self.FK__SINHVIEN__IdCD__7A672E12" FromRole="CHIENDICH" ToRole="SINHVIEN" />
+  </EntityType>
+  <EntityType Name="CHIPHIPHATSINH">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPhieuThanhToan" Type="Int32" Nullable="false" />
+    <Property Name="IdCV" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LyDo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChungTu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DonGia" Type="Double" />
+    <NavigationProperty Name="PHIEUTHANHTOAN" Relationship="Self.FK__CHIPHIPHA__IdPhi__6B24EA82" FromRole="CHIPHIPHATSINH" ToRole="PHIEUTHANHTOAN" />
+    <NavigationProperty Name="CONGVIEC" Relationship="Self.FK__CHIPHIPHAT__IdCV__6C190EBB" FromRole="CHIPHIPHATSINH" ToRole="CONGVIEC" />
+  </EntityType>
+  <EntityType Name="CHUCVU">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Luong" Type="Double" Nullable="false" />
+    <Property Name="QuyenHan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="NHANVIENs" Relationship="Self.FK__NHANVIEN__IdChuc__74AE54BC" FromRole="CHUCVU" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="CONGVIEC">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdCD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TenCV" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaDiem" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuongNguoi" Type="Int32" Nullable="false" />
+    <Property Name="NgayBatDau" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ThoiGian" Type="Int32" Nullable="false" />
+    <Property Name="ChiPhiMotNguoi" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="MoreInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHIENDICH" Relationship="Self.FK__CONGVIEC__IdCD__440B1D61" FromRole="CONGVIEC" ToRole="CHIENDICH" />
+    <NavigationProperty Name="CHIPHIPHATSINHs" Relationship="Self.FK__CHIPHIPHAT__IdCV__6C190EBB" FromRole="CONGVIEC" ToRole="CHIPHIPHATSINH" />
+    <NavigationProperty Name="CTCONGVIECs" Relationship="Self.FK__CTCONGVIEC__IdCV__571DF1D5" FromRole="CONGVIEC" ToRole="CTCONGVIEC" />
+  </EntityType>
+  <EntityType Name="CTCONGVIEC">
+    <Key>
+      <PropertyRef Name="IdCV" />
+      <PropertyRef Name="IdDoi" />
+    </Key>
+    <Property Name="IdCV" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdDoi" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="KetQuaCV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="HinhAnh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CONGVIEC" Relationship="Self.FK__CTCONGVIEC__IdCV__571DF1D5" FromRole="CTCONGVIEC" ToRole="CONGVIEC" />
+    <NavigationProperty Name="DOI" Relationship="Self.FK__CTCONGVIE__IdDoi__5812160E" FromRole="CTCONGVIEC" ToRole="DOI" />
+  </EntityType>
+  <EntityType Name="DOI">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdCD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SoLuongThanhVien" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CHIENDICH" Relationship="Self.FK__DOI__IdCD__48CFD27E" FromRole="DOI" ToRole="CHIENDICH" />
+    <NavigationProperty Name="CTCONGVIECs" Relationship="Self.FK__CTCONGVIE__IdDoi__5812160E" FromRole="DOI" ToRole="CTCONGVIEC" />
+    <NavigationProperty Name="GIANGVIENs" Relationship="Self.FK__GIANGVIEN__IdDoi__7F2BE32F" FromRole="DOI" ToRole="GIANGVIEN" />
+    <NavigationProperty Name="SINHVIENs" Relationship="Self.FK__SINHVIEN__IdDoi__7B5B524B" FromRole="DOI" ToRole="SINHVIEN" />
+  </EntityType>
+  <EntityType Name="GIANGVIEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdCD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdDoi" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GioiTinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Khoa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHIENDICH" Relationship="Self.FK__GIANGVIEN__IdCD__7E37BEF6" FromRole="GIANGVIEN" ToRole="CHIENDICH" />
+    <NavigationProperty Name="DOI" Relationship="Self.FK__GIANGVIEN__IdDoi__7F2BE32F" FromRole="GIANGVIEN" ToRole="DOI" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdChucVu" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pwrd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CHUCVU" Relationship="Self.FK__NHANVIEN__IdChuc__74AE54BC" FromRole="NHANVIEN" ToRole="CHUCVU" />
+  </EntityType>
+  <EntityType Name="PHIEUTHANHTOAN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ChiPhiDuDinh" Type="Double" Nullable="false" />
+    <Property Name="CHiPhiThucTe" Type="Double" Nullable="false" />
+    <Property Name="TongChiPhiPhatSinh" Type="Double" Nullable="false" />
+    <Property Name="TongChiPhiDuDinh" Type="Double" Nullable="false" />
+    <Property Name="TongChiPhiThucTe" Type="Double" Nullable="false" />
+    <NavigationProperty Name="CHIENDICH" Relationship="Self.FK__PHIEUTHANH__IdCD__6477ECF3" FromRole="PHIEUTHANHTOAN" ToRole="CHIENDICH" />
+    <NavigationProperty Name="CHIPHIPHATSINHs" Relationship="Self.FK__CHIPHIPHA__IdPhi__6B24EA82" FromRole="PHIEUTHANHTOAN" ToRole="CHIPHIPHATSINH" />
+  </EntityType>
+  <EntityType Name="SINHVIEN">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdCD" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdDoi" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="GioiTinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="SDT" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lop" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NgayVaoDoan" Type="DateTime" Precision="0" />
+    <Property Name="DiemTB" Type="Double" Nullable="false" />
+    <NavigationProperty Name="CHIENDICH" Relationship="Self.FK__SINHVIEN__IdCD__7A672E12" FromRole="SINHVIEN" ToRole="CHIENDICH" />
+    <NavigationProperty Name="DOI" Relationship="Self.FK__SINHVIEN__IdDoi__7B5B524B" FromRole="SINHVIEN" ToRole="DOI" />
+  </EntityType>
+  <Association Name="FK__CONGVIEC__IdCD__440B1D61">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CONGVIEC">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DOI__IdCD__48CFD27E">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="DOI" Type="Self.DOI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DOI">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GIANGVIEN__IdCD__7E37BEF6">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GIANGVIEN">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTHANH__IdCD__6477ECF3">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="PHIEUTHANHTOAN" Type="Self.PHIEUTHANHTOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PHIEUTHANHTOAN">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SINHVIEN__IdCD__7A672E12">
+    <End Role="CHIENDICH" Type="Self.CHIENDICH" Multiplicity="1" />
+    <End Role="SINHVIEN" Type="Self.SINHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHIENDICH">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SINHVIEN">
+        <PropertyRef Name="IdCD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHIPHIPHA__IdPhi__6B24EA82">
+    <End Role="PHIEUTHANHTOAN" Type="Self.PHIEUTHANHTOAN" Multiplicity="1" />
+    <End Role="CHIPHIPHATSINH" Type="Self.CHIPHIPHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUTHANHTOAN">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CHIPHIPHATSINH">
+        <PropertyRef Name="IdPhieuThanhToan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CHIPHIPHAT__IdCV__6C190EBB">
+    <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="1" />
+    <End Role="CHIPHIPHATSINH" Type="Self.CHIPHIPHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONGVIEC">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CHIPHIPHATSINH">
+        <PropertyRef Name="IdCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NHANVIEN__IdChuc__74AE54BC">
+    <End Role="CHUCVU" Type="Self.CHUCVU" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUCVU">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="IdChucVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTCONGVIEC__IdCV__571DF1D5">
+    <End Role="CONGVIEC" Type="Self.CONGVIEC" Multiplicity="1" />
+    <End Role="CTCONGVIEC" Type="Self.CTCONGVIEC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONGVIEC">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CTCONGVIEC">
+        <PropertyRef Name="IdCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTCONGVIE__IdDoi__5812160E">
+    <End Role="DOI" Type="Self.DOI" Multiplicity="1" />
+    <End Role="CTCONGVIEC" Type="Self.CTCONGVIEC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOI">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CTCONGVIEC">
+        <PropertyRef Name="IdDoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GIANGVIEN__IdDoi__7F2BE32F">
+    <End Role="DOI" Type="Self.DOI" Multiplicity="1" />
+    <End Role="GIANGVIEN" Type="Self.GIANGVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOI">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GIANGVIEN">
+        <PropertyRef Name="IdDoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SINHVIEN__IdDoi__7B5B524B">
+    <End Role="DOI" Type="Self.DOI" Multiplicity="1" />
+    <End Role="SINHVIEN" Type="Self.SINHVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DOI">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SINHVIEN">
+        <PropertyRef Name="IdDoi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CampaignDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHIENDICHes" EntityType="Self.CHIENDICH" />
+    <EntitySet Name="CHIPHIPHATSINHs" EntityType="Self.CHIPHIPHATSINH" />
+    <EntitySet Name="CHUCVUs" EntityType="Self.CHUCVU" />
+    <EntitySet Name="CONGVIECs" EntityType="Self.CONGVIEC" />
+    <EntitySet Name="CTCONGVIECs" EntityType="Self.CTCONGVIEC" />
+    <EntitySet Name="DOIs" EntityType="Self.DOI" />
+    <EntitySet Name="GIANGVIENs" EntityType="Self.GIANGVIEN" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="PHIEUTHANHTOANs" EntityType="Self.PHIEUTHANHTOAN" />
+    <EntitySet Name="SINHVIENs" EntityType="Self.SINHVIEN" />
+    <AssociationSet Name="FK__CONGVIEC__IdCD__440B1D61" Association="Self.FK__CONGVIEC__IdCD__440B1D61">
+      <End Role="CHIENDICH" EntitySet="CHIENDICHes" />
+      <End Role="CONGVIEC" EntitySet="CONGVIECs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DOI__IdCD__48CFD27E" Association="Self.FK__DOI__IdCD__48CFD27E">
+      <End Role="CHIENDICH" EntitySet="CHIENDICHes" />
+      <End Role="DOI" EntitySet="DOIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GIANGVIEN__IdCD__7E37BEF6" Association="Self.FK__GIANGVIEN__IdCD__7E37BEF6">
+      <End Role="CHIENDICH" EntitySet="CHIENDICHes" />
+      <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTHANH__IdCD__6477ECF3" Association="Self.FK__PHIEUTHANH__IdCD__6477ECF3">
+      <End Role="CHIENDICH" EntitySet="CHIENDICHes" />
+      <End Role="PHIEUTHANHTOAN" EntitySet="PHIEUTHANHTOANs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SINHVIEN__IdCD__7A672E12" Association="Self.FK__SINHVIEN__IdCD__7A672E12">
+      <End Role="CHIENDICH" EntitySet="CHIENDICHes" />
+      <End Role="SINHVIEN" EntitySet="SINHVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHIPHIPHA__IdPhi__6B24EA82" Association="Self.FK__CHIPHIPHA__IdPhi__6B24EA82">
+      <End Role="PHIEUTHANHTOAN" EntitySet="PHIEUTHANHTOANs" />
+      <End Role="CHIPHIPHATSINH" EntitySet="CHIPHIPHATSINHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CHIPHIPHAT__IdCV__6C190EBB" Association="Self.FK__CHIPHIPHAT__IdCV__6C190EBB">
+      <End Role="CONGVIEC" EntitySet="CONGVIECs" />
+      <End Role="CHIPHIPHATSINH" EntitySet="CHIPHIPHATSINHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NHANVIEN__IdChuc__74AE54BC" Association="Self.FK__NHANVIEN__IdChuc__74AE54BC">
+      <End Role="CHUCVU" EntitySet="CHUCVUs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTCONGVIEC__IdCV__571DF1D5" Association="Self.FK__CTCONGVIEC__IdCV__571DF1D5">
+      <End Role="CONGVIEC" EntitySet="CONGVIECs" />
+      <End Role="CTCONGVIEC" EntitySet="CTCONGVIECs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTCONGVIE__IdDoi__5812160E" Association="Self.FK__CTCONGVIE__IdDoi__5812160E">
+      <End Role="DOI" EntitySet="DOIs" />
+      <End Role="CTCONGVIEC" EntitySet="CTCONGVIECs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GIANGVIEN__IdDoi__7F2BE32F" Association="Self.FK__GIANGVIEN__IdDoi__7F2BE32F">
+      <End Role="DOI" EntitySet="DOIs" />
+      <End Role="GIANGVIEN" EntitySet="GIANGVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SINHVIEN__IdDoi__7B5B524B" Association="Self.FK__SINHVIEN__IdDoi__7B5B524B">
+      <End Role="DOI" EntitySet="DOIs" />
+      <End Role="SINHVIEN" EntitySet="SINHVIENs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

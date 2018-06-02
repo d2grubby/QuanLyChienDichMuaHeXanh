@@ -1,0 +1,17 @@
+﻿@using VolunteerCampaignWebsite.Models
+
+@model VolunteerCampaignWebsite.Models.NHANVIEN
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Name = Model.Ten;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="row">
+    <span>Welcome,</span>
+    <h2>@Model.Ten</h2>
+</div>
+
+

@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VolunteerCampaignDBModelStoreContainer" CdmEntityContainer="CampaignDB">
+    <EntitySetMapping Name="CHIENDICHes">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.CHIENDICH">
+        <MappingFragment StoreEntitySet="CHIENDICH">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="YNghia" ColumnName="YNghia" />
+          <ScalarProperty Name="SoLuongNguoiCan" ColumnName="SoLuongNguoiCan" />
+          <ScalarProperty Name="SoLuongNguoiThamGia" ColumnName="SoLuongNguoiThamGia" />
+          <ScalarProperty Name="NgayHetHan" ColumnName="NgayHetHan" />
+          <ScalarProperty Name="MoreInfo" ColumnName="MoreInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHIPHIPHATSINHs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.CHIPHIPHATSINH">
+        <MappingFragment StoreEntitySet="CHIPHIPHATSINH">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdPhieuThanhToan" ColumnName="IdPhieuThanhToan" />
+          <ScalarProperty Name="IdCV" ColumnName="IdCV" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+          <ScalarProperty Name="ChungTu" ColumnName="ChungTu" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHUCVUs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.CHUCVU">
+        <MappingFragment StoreEntitySet="CHUCVU">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="Luong" ColumnName="Luong" />
+          <ScalarProperty Name="QuyenHan" ColumnName="QuyenHan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONGVIECs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.CONGVIEC">
+        <MappingFragment StoreEntitySet="CONGVIEC">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCD" ColumnName="IdCD" />
+          <ScalarProperty Name="TenCV" ColumnName="TenCV" />
+          <ScalarProperty Name="DiaDiem" ColumnName="DiaDiem" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="SoLuongNguoi" ColumnName="SoLuongNguoi" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="ChiPhiMotNguoi" ColumnName="ChiPhiMotNguoi" />
+          <ScalarProperty Name="MoreInfo" ColumnName="MoreInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTCONGVIECs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.CTCONGVIEC">
+        <MappingFragment StoreEntitySet="CTCONGVIEC">
+          <ScalarProperty Name="IdCV" ColumnName="IdCV" />
+          <ScalarProperty Name="IdDoi" ColumnName="IdDoi" />
+          <ScalarProperty Name="KetQuaCV" ColumnName="KetQuaCV" />
+          <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOIs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.DOI">
+        <MappingFragment StoreEntitySet="DOI">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCD" ColumnName="IdCD" />
+          <ScalarProperty Name="SoLuongThanhVien" ColumnName="SoLuongThanhVien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIANGVIENs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.GIANGVIEN">
+        <MappingFragment StoreEntitySet="GIANGVIEN">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCD" ColumnName="IdCD" />
+          <ScalarProperty Name="IdDoi" ColumnName="IdDoi" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Khoa" ColumnName="Khoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdChucVu" ColumnName="IdChucVu" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Pwrd" ColumnName="Pwrd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUTHANHTOANs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.PHIEUTHANHTOAN">
+        <MappingFragment StoreEntitySet="PHIEUTHANHTOAN">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCD" ColumnName="IdCD" />
+          <ScalarProperty Name="ChiPhiDuDinh" ColumnName="ChiPhiDuDinh" />
+          <ScalarProperty Name="CHiPhiThucTe" ColumnName="CHiPhiThucTe" />
+          <ScalarProperty Name="TongChiPhiPhatSinh" ColumnName="TongChiPhiPhatSinh" />
+          <ScalarProperty Name="TongChiPhiDuDinh" ColumnName="TongChiPhiDuDinh" />
+          <ScalarProperty Name="TongChiPhiThucTe" ColumnName="TongChiPhiThucTe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SINHVIENs">
+      <EntityTypeMapping TypeName="VolunteerCampaignDBModel.SINHVIEN">
+        <MappingFragment StoreEntitySet="SINHVIEN">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdCD" ColumnName="IdCD" />
+          <ScalarProperty Name="IdDoi" ColumnName="IdDoi" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Lop" ColumnName="Lop" />
+          <ScalarProperty Name="NgayVaoDoan" ColumnName="NgayVaoDoan" />
+          <ScalarProperty Name="DiemTB" ColumnName="DiemTB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

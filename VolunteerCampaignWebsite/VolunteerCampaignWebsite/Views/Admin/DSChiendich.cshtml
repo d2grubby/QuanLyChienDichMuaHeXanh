@@ -1,0 +1,78 @@
+﻿@using VolunteerCampaignWebsite.Models
+
+@model IEnumerable<VolunteerCampaignWebsite.Models.CHIENDICH>
+
+@{
+    ViewBag.Title = "Danh sách chiến dịch";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+
+    <div class="clearfix"></div>
+    <!-- First row -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel" style="height:100%">
+                <div class="x_title">
+                    <h2>Danh sách chiến dịch</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table id="datatable-buttons" class="table table-striped table-bordered" width="100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên</th>
+                                <th>Ngày bắt đầu</th>
+                                <th>Thời gian</th>
+                                <th>Ý nghĩa</th>
+                                <th>Số lượng người cần</th>
+                                <th>Số lượng người tham gia</th>
+                                <th>Ngày hết hạn</th>
+                                <th>More info</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                   
+                                    <td> @Html.DisplayFor(modelItem => item.Id) </td>
+                                    <td> @Html.DisplayFor(modelItem => item.Ten) </td>
+                                    <td> @String.Format("{0:MMMM dd, yyyy}", item.NgayBatDau) </td>
+                                    <td> @Html.DisplayFor(modelItem => item.ThoiGian) Ngày </td>
+                                    <td> @Html.DisplayFor(modelItem => item.YNghia) </td>
+                                    <td> @Html.DisplayFor(modelItem => item.SoLuongNguoiCan) </td>
+                                    <td> @Html.DisplayFor(modelItem => item.SoLuongNguoiThamGia) </td>
+                                    <td> @String.Format("{0:MMMM dd, yyyy}", item.NgayHetHan) </td>
+                                    <td> @Html.DisplayFor(modelItem => item.MoreInfo) </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

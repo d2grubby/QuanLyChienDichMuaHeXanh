@@ -1,0 +1,351 @@
+﻿@using VolunteerCampaignWebsite.Models
+
+@model ViewModel
+
+@{
+    ViewBag.Title = "TinhChiPhi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Tính chi phí</h3>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <!-- First row -->
+    <div class="row">
+        <!-- Fee panel -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel" style="height:100%">
+                <div class="x_title">
+                    <h2>Thông tin phiếu chi phí</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" action="TinhChiPhi" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="jobID">
+                                Mã chiến dịch <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="campaignID" name="campaignID" required="required" class="form-control col-md-7 col-xs-12" readonly>
+                                <input type="text" id="campaignIDHidden" name="campaignIDHidden" class="form-control col-md-7 col-xs-12 hidden"/>
+                            </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-campaign-modal-lg">...</button> 
+                            <div class="modal fade bs-campaign-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">Danh sách chiến dịch</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <table id="DSChiendich" class="table table-striped jambo_table" style="width:100%">
+                                                    <thead>
+                                                        <tr class="headings">
+                                                            <th class="column-title">Mã chiến dịch</th>
+                                                            <th class="column-title">Tên chiến dịch</th>
+                                                            <th class="column-title">Ngày bắt đầu</th>
+                                                            <th class="column-title">Thời gian</th>
+                                                            <th class="column-title">Ý nghĩa</th>
+                                                            <th class="column-title">Số lượng người cần</th>
+                                                            <th class="column-title">Số lượng người tham gia</th>
+                                                            <th class="column-title">Ngày hết hạn</th>
+                                                            <th class="column-title no-link last"><span class="nobr">More info</span></th>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+                                                        @foreach (var item in Model.CHIENDICH)
+                                                        {
+                                                            <tr>
+
+                                                                <td> @Html.DisplayFor(modelItem => item.Id) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.Ten) </td>
+                                                                <td> @String.Format("{0:MMMM dd, yyyy}", item.NgayBatDau) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.ThoiGian) Ngày </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.YNghia) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.SoLuongNguoiCan) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.SoLuongNguoiThamGia) </td>
+                                                                <td> @String.Format("{0:MMMM dd, yyyy}", item.NgayHetHan) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.MoreInfo) </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 right">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="jobID">
+                                Mã công việc <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="jobID" name="jobID" required="required" class="form-control col-md-7 col-xs-12" readonly>
+                                <input type="text" id="jobIDHidden" name="jobIDHidden" class="form-control col-md-7 col-xs-12 hidden" />
+                            </div>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-job-modal-lg">...</button>
+                            <div class="modal fade bs-job-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="myModalLabel">Danh sách công việc</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <table id="DSCongviec" class="table table-striped jambo_table" style="width:100%">
+                                                    <thead>
+                                                        <tr class="headings">
+
+                                                            <th class="column-title hidden">Mã chiến dịch</th>
+                                                            <th class="column-title">Mã công việc   </th>
+                                                            <th class="column-title">Tên công việc</th>
+                                                            <th class="column-title">Địa điểm</th>
+                                                            <th class="column-title">Nội dung</th>
+                                                            <th class="column-title">Số lượng người</th>
+                                                            <th class="column-title">Ngày bắt đầu</th>
+                                                            <th class="column-title">Thời gian</th>
+                                                            <th class="column-title no-link last"><span class="nobr">Chi phí 1 người</span></th>
+
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody id="tblbody">
+                                                        @foreach (var item in Model.CONGVIEC)
+                                                        {
+                                                            <tr>
+                                                                <td class="hidden"> @Html.DisplayFor(modelItem => item.IdCD) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.Id) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.TenCV) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.DiaDiem) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.NoiDung) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.SoLuongNguoi) Người </td>
+                                                                <td> @String.Format("{0:MMMM dd, yyyy}", item.NgayBatDau) </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.ThoiGian) Ngày </td>
+                                                                <td> @Html.DisplayFor(modelItem => item.ChiPhiMotNguoi) $</td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 right">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">Select</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" hidden>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="feeID">
+                                Mã phiếu chi phí phát sinh 
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="feeID" name="feeID" class="form-control col-md-7 col-xs-12" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="feeName">
+                                Tên phiếu chi phí phát sinh <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="feeName" name="feeName" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="feeMeaning">
+                                Lý do <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="feeMeaning" name="feeMeaning" class="form-control col-md-7 col-xs-12"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="feeCertificate">
+                                Chứng từ <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="feeCertificate" name="feeCertificate" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="feePrice">
+                                Đơn giá
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <input type="number" id="feePrice" name="feePrice" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        
+                        @*<div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="totalFeePrice">
+                                Tổng chi phí
+                            </label>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <input type="number" id="totalFeePrice" name="totalFeePrice" class="form-control col-md-7 col-xs-12" readonly />
+                            </div>
+                        </div>*@
+
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 right">
+                                <button class="btn btn-primary " type="submit" value="Delete" name="submitButton" id="deleteBtn"> <i class="fa fa-trash-o"></i> Xóa</button>
+                                <button class="btn btn-primary " type="submit" value="Edit" name="submitButton" id="editBtn"> <i class="fa fa-edit"></i> Sửa</button>
+                                <button type="submit" class="btn btn-success" value="Add" name="submitButton" id="addBtn"> <i class="fa fa-plus"></i> Thêm</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- /Fee panel -->
+    </div>
+    <!-- /First row -->
+    <!-- Second row -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách phiếu chi phí phát sinh</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left">
+                        <div class="form-group">
+                            <table id="DSChiphiphatsinh" class="table table-striped jambo_table" style="width:100%">
+                                <thead>
+                                    <tr class="headings">
+                                        <th class="column-title hidden">Mã công việc</th>
+                                        <th class="column-title">Mã số</th>
+                                        <th class="column-title">Tên</th>
+                                        <th class="column-title">Lý do</th>
+                                        <th class="column-title">Chứng từ</th>
+
+                                        <th class="column-title no-link last"><span class="nobr">Đơn giá</span></th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @foreach (var item in Model.CHIPHIPHATSINH)
+                                    {
+                                        <tr>
+                                            <td class="hidden"> @Html.DisplayFor(modelItem => item.IdCV) </td>
+                                            <td> @Html.DisplayFor(modelItem => item.Id) </td>
+                                            <td> @Html.DisplayFor(modelItem => item.Ten) </td>
+                                            <td> @Html.DisplayFor(modelItem => item.LyDo) </td>
+                                            <td> @Html.DisplayFor(modelItem => item.ChungTu) </td>
+                                            <td> @Html.DisplayFor(modelItem => item.DonGia) </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Second row -->
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        window.onload = function () {
+            
+            var jobtable = $('#DSCongviec').DataTable();
+            var campaigninput = document.getElementById('campaignIDHidden');
+
+            campaigninput._value = campaigninput.value;
+            Object.defineProperty(campaigninput, "value", {
+                get: function () { return this._value; },
+                set: function (v) {
+                    this._value = v;
+                    alert('Bạn chọn chiến dịch ' + this.value);
+                    jobtable
+                        .columns(0)
+                        .search("^" + this.value + "$", true, false, true)
+                        .draw();
+                    document.getElementById('campaignID').value = this.value;
+                }
+            });
+
+            var jobinput = document.getElementById('jobIDHidden');
+
+            jobinput._value = jobinput.value;
+            Object.defineProperty(jobinput, "value", {
+                get: function () { return this._value; },
+                set: function (v) {
+                    this._value = v;
+                    alert('Bạn chọn công việc ' + this.value);
+                }
+            });
+        }
+    </script>
+}

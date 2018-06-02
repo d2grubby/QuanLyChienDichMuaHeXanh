@@ -1,0 +1,93 @@
+﻿@using VolunteerCampaignWebsite.Models
+
+@model  IEnumerable<VolunteerCampaignWebsite.Models.CHUCVU>
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LogIn.cshtml";
+}
+
+<div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form action="Login" method="post" data-parsley-validate>
+                    @Html.AntiForgeryToken()
+
+                    <h1>Login</h1>
+                    @ViewBag.ThongBao
+                    <div>
+                        <input type="text" id="userID" name="userID" class="form-control" placeholder="Username" required="required" />
+                    </div>
+                    <div>
+                        <input type="password" id="userPWD" name="userPWD" class="form-control" placeholder="Password" required="required" />
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-default" name="submitButton" value="Login"> Đăng nhập</button>
+                        <a class="reset_pass" href="#">Lost your password?</a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="separator">
+                        <p class="change_link">
+                            New to site?
+                            <a href="#signup" class="to_register"> Create Account </a>
+                        </p>
+                        <div class="clearfix"></div>
+                        <br />
+
+                    </div>
+                </form>
+            </section>
+        </div>
+        <div id="register" class="animate form registration_form">
+            <section class="login_content">
+                <form action="Login" method="post" data-parsley-validate>
+                    @Html.AntiForgeryToken()
+
+                    <h1>Create Account</h1>
+                    @ViewBag.ThongBao
+                    <div>
+                        <input type="text" class="form-control" placeholder="Username" required="required" name="username" />
+                    </div>
+                    <div>
+                        <input type="email" class="form-control" placeholder="Email" required="required" name="email" />
+                    </div>
+                    <div>
+                        <input type="password" class="form-control" placeholder="Password" required="required" name="password" />
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Name" required="required" name="name" />
+                    </div>
+                    <div>
+                        <input type="text" name="phone" class="form-control" data-inputmask="'mask' : '(999) 999-9999'">
+                    </div>
+                    <div>
+                        <select class="form-control" name="chucvu">
+                            <option disabled selected> -- Chọn chức vụ -- </option>
+                            @foreach (var item in Model)
+                            {
+                                <option>@item.Ten</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div>
+                        <button type="submit" class="btn btn-default" name="submitButton" value="Register"> Tạo tài khoản</button>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="separator">
+                        <p class="change_link">
+                            Already a member ?
+                            <a href="#signin" class="to_register"> Log in </a>
+                        </p>
+                        <div class="clearfix"></div>
+                        <br />
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>

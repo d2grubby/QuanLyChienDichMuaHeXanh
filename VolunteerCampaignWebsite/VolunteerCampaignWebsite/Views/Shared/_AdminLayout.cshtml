@@ -1,0 +1,547 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="~/Images/favicon.ico" type="image/ico" />
+    <title>@ViewBag.Title </title>
+    <!-- Bootstrap -->
+    <link href="~/Templates/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="~/Templates/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Templates/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/Templates/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="~/Templates/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/Templates/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="~/Templates/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="~/Templates/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="~/Templates/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/Templates/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/Templates/build/css/custom.min.css" rel="stylesheet">
+    <!-- Datatables -->
+    <link href="~/Templates/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Templates/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Templates/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Templates/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="~/Templates/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    
+  
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="Index" class="site_title"><i class="fa fa-paw"></i> <span>Home</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>@ViewBag.Name</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>General</h3>
+                            @if (ViewBag.IsAdmin == "Admin")
+                            {
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a><i class="fa fa-home"></i> Quản lý <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Chiến dịch", "QLChiendich", "Admin")</li>
+                                            <li>@Html.ActionLink("Công việc", "QLCongviec", "Admin")</li>
+                                            <li>@Html.ActionLink("Giảng viên", "QLGiangvien", "Admin")</li>
+                                            <li>@Html.ActionLink("Sinh viên", "QLSinhvien", "Admin")</li>
+
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-edit"></i> Tìm kiếm <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Chiến dịch", "DSChiendich", "Admin")</li>
+                                            <li>@Html.ActionLink("Công việc", "DSCongViec", "Admin")</li>
+                                            <li>@Html.ActionLink("Giảng viên", "DSGiangvien", "Admin")</li>
+                                            <li>@Html.ActionLink("Sinh viên", "DSSinhvien", "Admin")</li>
+                                            <li>@Html.ActionLink("Chi phí", "DSChiphi", "Admin")</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-cog"></i> Nghiệp vụ <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Phân chia công việc", "Phanchiacongviec", "Admin")</li>
+                                            <li>@Html.ActionLink("Tính chi phí", "TinhChiPhi", "Admin")</li>
+                                            <li>@Html.ActionLink("Đánh giá công việc", "Danhgiacongviec", "Admin")</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                            else if (ViewBag.IsAdmin == "QTSV")
+                            {
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a><i class="fa fa-home"></i> Quản lý <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Sinh viên", "QLSinhvien", "Admin")</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-edit"></i> Tìm kiếm <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Sinh viên", "DSSinhvien", "Admin")</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a><i class="fa fa-home"></i> Quản lý <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Giảng viên", "QLGiangvien", "Admin")</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fa fa-edit"></i> Tìm kiếm <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li>@Html.ActionLink("Giảng viên", "DSGiangvien", "Admin")</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+
+
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="@Url.Action("Login", "Admin")">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                       
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        @if (ViewBag.IsAdmin == "Admin")
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="images/img.jpg" alt="">@ViewBag.Name
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="@Url.Action("QLNguoidung", "Admin")">Quản lý nhân viên</a></li>
+                                        <li><a href="@Url.Action("QLChucvu", "Admin")">Quản lý chức vụ</a></li>
+                                        <li><a href="@Url.Action("Login", "Admin")"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                        else
+                        {
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <img src="images/img.jpg" alt="">@ViewBag.Name
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                        <li><a href="@Url.Action("Suathongtincanhan", "Admin", new { name = ViewBag.Name })">Thay đổi thông tin</a></li>
+                                        <li><a href="@Url.Action("Login", "Admin")"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        }
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/Templates/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Templates/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Templates/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/Templates/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="~/Templates/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="~/Templates/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="~/Templates/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/Templates/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="~/Templates/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="~/Templates/vendors/Flot/jquery.flot.js"></script>
+    <script src="~/Templates/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="~/Templates/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="~/Templates/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="~/Templates/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="~/Templates/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="~/Templates/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="~/Templates/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="~/Templates/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Templates/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="~/Templates/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="~/Templates/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="~/Templates/vendors/moment/min/moment.min.js"></script>
+    <script src="~/Templates/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="~/Templates/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/Templates/build/js/custom.min.js"></script>
+    <!-- Parsley -->
+    <script src="~/Templates/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Datatables -->
+    <script src="~/Templates/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/Templates/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="~/Templates/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="~/Templates/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="~/Templates/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/Templates/vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- jQuery Smart Wizard -->
+    <script src="~/Templates/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    <!-- jquery.inputmask -->
+    <script src="~/Templates/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <!-- Dropzone.js -->
+    <script src="~/Templates/vendors/dropzone/dist/min/dropzone.min.js"></script>
+    <!-- FastClick -->
+    <script src="~/Templates/vendors/fastclick/lib/fastclick.js"></script>
+
+    <script>
+        $('#myDatepicker').datetimepicker();
+
+        $('#myDatepicker2').datetimepicker({
+            format: 'DD.MM.YYYY'
+        });
+        $('#myDatepicker5').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+        $('#myDatepicker6').datetimepicker({
+            format: 'MM/DD/YYYY'
+        });
+        $('#myDatepicker3').datetimepicker({
+            format: 'hh:mm A'
+        });
+
+        $('#myDatepicker4').datetimepicker({
+            ignoreReadonly: true,
+            allowInputToggle: true
+        });
+
+        $('#datetimepicker6').datetimepicker();
+
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false
+        });
+
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+        });
+
+
+
+        $("#DSChiendich").DataTable();
+        $("#DSCongviec").DataTable();
+        $("#DSNguoithamgia").DataTable();
+        $("#DSGiangvien").DataTable();
+        $("#DSSinhvien").DataTable();
+        $("#DSNhanvien").DataTable();
+        $("#DSDoi").DataTable();
+        $("#DSChucvu").DataTable();
+        $("#DSKetquaCV").DataTable();
+
+
+        // DS CHIEN DICH
+        $(document).ready(function () {
+            var table = $('#DSChiendich').DataTable();
+
+            $('#DSChiendich tbody').on('click', 'tr', function () {
+                var data = table.row(this).data();
+
+                $('#campaignIDHidden').val(data[0]);
+                $('#campaignID').val(data[0]);
+                $('#campaignName').val(data[1]);
+                var startday = new Date(data[2]);
+                var time = parseInt(data[3].split("Ngày"));
+                var endday = new Date(startday);
+                endday.setDate(endday.getDate() + time);
+                var strStartday = startday.getMonth() + 1 + '/' + startday.getDate() + '/' + startday.getFullYear();
+                var strEndday = endday.getMonth() + 1 + '/' + endday.getDate() + '/' + endday.getFullYear();
+                var uptime = strStartday + ' - ' + strEndday;
+                $('#reservation').val(uptime);
+                $('#campaignMeaning').val(data[4]);
+                $('#campaignPneeded').val(parseInt(data[5]));
+                $('#campaignPjoined').val(parseInt(data[6]));
+                $('#campaignMoreinfo').val(data[8]);
+
+
+            });
+        });
+
+        // DS CONG VIEC
+        $(document).ready(function () {
+            var table = $('#DSCongviec').DataTable();
+
+            $('#DSCongviec tbody').on('click', 'tr', function () {
+                var data = table.row(this).data();
+                $('#campaignID').val(data[0]);
+                $('#jobIDHidden').val(data[1]);
+                $('#jobID').val(data[1]);
+                $('#jobName').val(data[2]);
+                $('#jobPlace').val(data[3]);
+                $('#jobDetails').val(data[4]);
+                $('#jobPneeded').val(parseInt(data[5]));
+                var startday = new Date(data[6]);
+                var time = parseInt(data[7].split("Ngày"));
+                var endday = new Date(startday);
+                endday.setDate(endday.getDate() + time); var strStartday = startday.getMonth() + 1 + '/' + startday.getDate() + '/' + startday.getFullYear();
+                var strEndday = endday.getMonth() + 1 + '/' + endday.getDate() + '/' + endday.getFullYear();
+                var uptime = strStartday + ' - ' + strEndday;
+                $('#reservation').val(uptime);
+                $('#jobCost').val(parseFloat(data[8]));
+                $('#jobMoreinfo').val(data[9]);
+            });
+        });
+
+        // DS NGUOI THAM GIA
+        $(document).ready(function () {
+            var table = $('#DSNguoithamgia').DataTable();
+
+            $('#DSNguoithamgia tbody').on('click', 'tr', function () {
+                var data = table.row(this).data();
+
+                $('#participaterID').val(data[1]);
+                $('#participaterName').val(data[2]);
+                $('#positionSelect').val(data[3]);
+                $('#paticipaterPosition').val(data[3]);
+                var birthday = new Date(data[4]);
+                var partyjoinday = new Date(data[8]);
+
+                var strBirthday = birthday.getMonth() + '/' + birthday.getDate() + '/' + birthday.getFullYear();
+                var strPartyjoinday = partyjoinday.getMonth() + '/' + partyjoinday.getDate() + '/' + partyjoinday.getFullYear();
+
+                $('#participaterBirthday').val(strBirthday);
+                $('#gender').val(data[5]);
+                $('#participaterPhone').val(data[6]);
+                $('#studentClass').val(data[7]);
+                $('#studentPartyJoinDay').val(strPartyjoinday);
+                $('#studentMark').val(parseFloat(data[9]));
+                $('#facultySelect').val(data[10]);
+
+
+
+            });
+        });
+
+        // DS DOI
+        $(document).ready(function () {
+            var table = $('#DSDoi').DataTable();
+
+            $('#DSDoi tbody').on('click', 'tr', function () {
+
+                var data = table.row(this).data();
+                $('#teamIDHidden').val(data[1]);
+                $('#teamID').val(data[1]);
+
+                $('#teamID').val(data[1]);
+                $('#participaterjoin').val(parseInt(data[2].split('/')[0]));
+                $('#participaterneed').val(parseInt(data[2].split('/')[1]));
+
+
+            });
+        });
+
+        // DS CHI PHI PHAT SINH
+        $(document).ready(function () {
+            var table = $('#DSChiphiphatsinh').DataTable();
+
+            $('#DSChiphiphatsinh tbody').on('click', 'tr', function () {
+
+                var data = table.row(this).data();
+                $('#jobID').val(data[0]);
+                $('#feeID').val(data[1]);
+                $('#feeName').val(data[2]);
+                $('#feeMeaning').val(data[3]);
+                $('#feeCertificate').val(data[4]);
+                $('#feePrice').val(data[5]);
+            });
+        });
+
+        // DS GIANG VIEN
+        $(document).ready(function () {
+            var table = $('#DSGiangvien').DataTable();
+
+            $('#DSGiangvien tbody').on('click', 'tr', function () {
+
+                var data = table.row(this).data();
+                $('#campaignID').val(data[0]);
+                $('#participaterID').val(data[1]);
+                $('#participaterName').val(data[2]);
+
+                var birthday = new Date(data[3]);
+                var strBirthday = birthday.getMonth() + '/' + birthday.getDate() + '/' + birthday.getFullYear();
+                $('#participaterBirthday').val(strBirthday);
+
+                $('#gender').val(data[4]);
+                $('#participaterPhone').val(data[5]);
+                $('#facultySelect').val(data[6]);
+            });
+        });
+
+        // DS SINH VIEN
+        $(document).ready(function () {
+            var table = $('#DSSinhvien').DataTable();
+
+            $('#DSSinhvien tbody').on('click', 'tr', function () {
+
+                var data = table.row(this).data();
+                $('#campaignID').val(data[0]);
+                $('#participaterID').val(data[1]);
+                $('#participaterName').val(data[2]);
+
+                var birthday = new Date(data[3]);
+                var strBirthday = birthday.getMonth() + '/' + birthday.getDate() + '/' + birthday.getFullYear();
+                $('#participaterBirthday').val(strBirthday);
+
+                $('#gender').val(data[4]);
+                $('#participaterPhone').val(data[5]);
+                $('#studentClass').val(data[6]);
+
+                var joinday = new Date(data[7]);
+                var strJoinday = joinday.getMonth() + '/' + joinday.getDate() + '/' + joinday.getFullYear();
+                $('#studentPartyJoinDay').val(strJoinday);
+
+                $('#studentMark').val(data[8]);
+            });
+        });
+
+        // DS CHUC VU 
+        $(document).ready(function () {
+            var table = $('#DSChucvu').DataTable();
+
+            $('#DSChucvu tbody').on('click', 'tr', function () {
+
+                var data = table.row(this).data();
+                $('#positionID').val(data[0]);
+                $('#positionName').val(data[1]);
+                $('#positionSalary').val(data[2]);
+                $('#positionPower').val(data[3]);
+            });
+        });
+
+        // DS NHAN VIEN
+        $(document).ready(function () {
+            var table = $('#DSNhanvien').DataTable();
+
+            $('#DSNhanvien tbody').on('click', 'tr', function () {
+
+                var data = table.row(this).data();
+                $('#employeeID').val(data[0]);
+                $('#employeeName').val(data[1]);
+                $('#positionSelect').val(data[2]);
+                $('#employeeMail').val(data[3]);
+                $('#employeePhone').val(data[4]);
+                $('#employeeUsername').val(data[5]);
+                $('#employeePassword').val(data[6]);
+            });
+        });
+
+        // DS KET QUA CONG VIEC
+        $(document).ready(function () {
+            var table = $('#DSKetquaCV').DataTable();
+
+            $('#DSKetquaCV tbody').on('click', 'tr', function () {
+
+                var data = table.row(this).data();
+                $('#campaignID').val(data[0]);
+                $('#jobID').val(data[1]);
+                $('#participaterneed').val(data[2]);
+                $('#participaterjoin').val(data[3]);
+                $('#teamID').val(data[4]);
+                $('#jobResult').val(data[5]);
+                $('#jobPictures').val(data[6]);
+            });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

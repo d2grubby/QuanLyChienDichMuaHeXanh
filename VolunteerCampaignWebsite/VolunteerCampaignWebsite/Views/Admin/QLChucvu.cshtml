@@ -1,0 +1,167 @@
+﻿@using VolunteerCampaignWebsite.Models
+
+@model IEnumerable<VolunteerCampaignWebsite.Models.CHUCVU>
+
+@{
+    ViewBag.Title = "Quản lý chức vụ";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <h3>Quản lý chức vụ</h3>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <!-- First row -->
+    <div class="row">
+        <!-- Jobs information -->
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thông tin chức vụ</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="QLChucvu" method="post">
+                        @Html.AntiForgeryToken()
+                        @ViewBag.ThongBao
+                        <div class="form-group hidden">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="positionID">
+                                Mã chức vụ
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="positionID" name="positionID" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="positionName">
+                                Tên chức vụ <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" id="positionName" name="positionName" required="required" class="form-control col-md-7 col-xs-12">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="positionSalary">
+                                Lương <span class="required">*</span>
+                            </label>
+                            <div class="col-md-2 col-sm-2 col-xs-12">
+                                <input type="number" id="positionSalary" name="positionSalary" required="required" class="form-control col-md-7 col-xs-12" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="positionPower">
+                                Quyền hạn <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <textarea id="positionPower" name="positionPower" class="form-control col-md-7 col-xs-12"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="ln_solid"></div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3 right">
+                                <button class="btn btn-primary " type="submit" value="Delete" name="submitButton" id="deleteBtn"> <i class="fa fa-trash-o"></i> Xóa</button>
+                                <button class="btn btn-primary " type="submit" value="Edit" name="submitButton" id="editBtn"> <i class="fa fa-edit"></i> Sửa</button>
+                                <button type="submit" class="btn btn-success" value="Add" name="submitButton" id="addBtn"> <i class="fa fa-plus"></i> Thêm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <!-- /Campaign information -->
+        <!-- Actions panel -->
+        <!-- /Action panel -->
+    </div>
+    <!-- /First row -->
+    <!-- Second row -->
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Danh sách nhân viên</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="#">Settings 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form class="form-horizontal form-label-left">
+                        <div class="form-group">
+                            <table id="DSChucvu" class="table table-striped jambo_table" style="width:100%">
+                                <thead>
+                                    <tr class="headings">
+                                        <th class="column-title hidden">Mã chức vụ</th>
+                                        <th class="column-title">Tên chức vụ</th>
+                                        <th class="column-title">Lương</th>
+
+                                        <th class="column-title no-link last"><span class="nobr">Quyền hạn</span></th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody id="tblbody">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="hidden"> @Html.DisplayFor(modelItem => item.Id) </td>
+
+                                            <td> @Html.DisplayFor(modelItem => item.Ten) </td>
+                                            <td> @Html.DisplayFor(modelItem => item.Luong) </td>
+                                            <td> @Html.DisplayFor(modelItem => item.QuyenHan) </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Second row -->
+</div>
+
